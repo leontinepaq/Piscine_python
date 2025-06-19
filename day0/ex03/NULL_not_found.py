@@ -1,12 +1,12 @@
 from typing import Any
-import math 
+
 
 def NULL_not_found(object: Any) -> int:
 	handlers = {
 		type(None):	(lambda x: True, "Nothing"),
-		float:		(math.isnan, "Cheese"),
+		float:		(lambda x: x != x, "Cheese"), #only True for NaN values, = international standard for floats (to avoid importing math.isnan)
 		int:		(lambda x: x == 0, "Zero"),
-		str:		(lambda x: x=="", "Empty"),
+		str:		(lambda x: x == "", "Empty"),
 		bool:		(lambda x: x is False, "Fake")
 	}
 	obj_type = type(object)
@@ -29,7 +29,7 @@ def NULL_not_found(object: Any) -> int:
 # 	assert NULL_not_found("") == 0				# Empty
 # 	assert NULL_not_found(False) == 0	 		# Fake
 
-# 	assert NULL_not_found(1) == 1				# Not null
+# 	assert NULL_not_found(1.1) == 1				# Not null
 # 	assert NULL_not_found("Hello") == 1			# Not null
 # 	assert NULL_not_found(True) == 1			# Not null
 # 	assert NULL_not_found([]) == 1				# Not in type_map
