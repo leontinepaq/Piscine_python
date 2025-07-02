@@ -1,55 +1,88 @@
 """
-Module description: short explanation of what this script does.
+Converts a string into Morse Code
 """
-
-NESTED_MORSE = {	" ": "/ ",
-					"A": ".- ", 'B':'-...',
-                    'C':'-.-.', 'D':'-..', 'E':'.',
-                    'F':'..-.', 'G':'--.', 'H':'....',
-                    'I':'..', 'J':'.---', 'K':'-.-',
-                    'L':'.-..', 'M':'--', 'N':'-.',
-                    'O':'---', 'P':'.--.', 'Q':'--.-',
-                    'R':'.-.', 'S':'...', 'T':'-',
-                    'U':'..-', 'V':'...-', 'W':'.--',
-                    'X':'-..-', 'Y':'-.--', 'Z':'--..',
-                    '1':'.----', '2':'..---', '3':'...--',
-                    '4':'....-', '5':'.....', '6':'-....',
-                    '7':'--...', '8':'---..', '9':'----.',
-                    '0':'-----'}
-
-
 
 import sys
 
+MORSE_CODE = {
+    " ": "/",
+    "A": ".-",
+    "B": "-...",
+    "C": "-.-.",
+    "D": "-..",
+    "E": ".",
+    "F": "..-.",
+    "G": "--.",
+    "H": "....",
+    "I": "..",
+    "J": ".---",
+    "K": "-.-",
+    "L": ".-..",
+    "M": "--",
+    "N": "-.",
+    "O": "---",
+    "P": ".--.",
+    "Q": "--.-",
+    "R": ".-.",
+    "S": "...",
+    "T": "-",
+    "U": "..-",
+    "V": "...-",
+    "W": ".--",
+    "X": "-..-",
+    "Y": "-.--",
+    "Z": "--..",
+    "1": ".----",
+    "2": "..---",
+    "3": "...--",
+    "4": "....-",
+    "5": ".....",
+    "6": "-....",
+    "7": "--...",
+    "8": "---..",
+    "9": "----.",
+    "0": "-----",
+}
 
-def your_function(arg: str) -> str:
+
+def is_alphanum_or_space(s: str) -> bool:
+    """Return True if all chars are ASCII alpha-numeric or space"""
+    return all((c.isalnum() or c == " ") and ord(c) < 128 for c in s)
+    # ord to exclude accents
+
+
+def convert_to_morse(s: str) -> str:
     """
-    Short description of the function.
+    Convert a string to Morse code
 
     Args:
-        arg (str): The input string to be processed.
+        s (str): String with only alpha-numeric ASCII chars and spaces
 
     Returns:
-        str: The processed string.
+        str: New string in Morse, letters separated by spaces,
+        spaces replaced by "/"
     """
-    return arg  # Replace with actual logic
+    return " ".join(MORSE_CODE[c.upper()] for c in s)
 
 
 def main():
     """
-    Main function: handles argument parsing and error management.
+    Main function: handles argument parsing and error management
     """
     args = sys.argv[1:]
 
-    if not args:
-        return
-
     try:
-        assert len(args) == 1, "only one argument is expected"
-        result = your_function(args[0])
+        if len(args) != 1 or not is_alphanum_or_space(args[0]):
+            raise SystemExit("AssertionError: the arguments are bad")
+            # autre maniere de gerer erreurs
+            # moins idiomatique que print + sys.exit(1)
+
+        result = convert_to_morse(args[0])
         print(result)
-    except AssertionError as e:
-        print(f"AssertionError: {e}", file=sys.stderr)
+
+    except Exception as e:
+        sys.exit(f"Unexpected error: {e}")
+        # appelle un SystemExit, idem moins idiomatique
 
 
 if __name__ == "__main__":
