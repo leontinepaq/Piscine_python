@@ -24,16 +24,27 @@ def main():
     """
     args = sys.argv[1:]
 
-    if not args:
-        return
-
     try:
-        assert len(args) == 1, "only one argument is expected"
+        if len(args) != 1:
+            raise AssertionError("the arguments are bad")
+
+        try:
+            int(args[0])
+        except ValueError:
+            raise AssertionError("the arguments are bad")
+
         result = your_function(args[0])
         print(result)
+
     except AssertionError as e:
         print(f"AssertionError: {e}", file=sys.stderr)
+        return 1
+    except Exception as e:
+        print(f"Unexpected error: {e}", file=sys.stderr)
+        return 1
+
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
