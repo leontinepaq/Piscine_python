@@ -5,10 +5,12 @@ characters, lower-case characters, punctuation characters, digits and spaces
 
 import sys
 
+
 def is_punct(c):
-    if c in  ".,;\"'-?:!":
+    if c in ".,;\"'-?:!":
         return True
     return False
+
 
 def count_chars(arg: str) -> str:
     """
@@ -35,7 +37,6 @@ def count_chars(arg: str) -> str:
         f"{nb_space} spaces\n"
         f"{nb_digits} digits"
     )
-
 
 
 def main():

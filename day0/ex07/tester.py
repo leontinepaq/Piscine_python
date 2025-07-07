@@ -1,5 +1,6 @@
 from sos import convert_to_morse, is_alphanum_or_space
 
+
 def run_tests():
     test_cases = [
         # (input_string, expected_output)
@@ -15,10 +16,11 @@ def run_tests():
         # Test validation function
         valid = is_alphanum_or_space(input_str)
         if not valid:
-            print(f"❌ Test {i} failed validation check: {input_str!r} should be valid")
+            print(f"❌ Test {i} failed validation check: {input_str!r} "
+                  "should be valid")
             all_passed = False
             continue
-        
+
         # Test conversion
         result = convert_to_morse(input_str)
         if result != expected:
@@ -41,6 +43,7 @@ def run_tests():
 
     if all_passed:
         print("\n🎉 All tests passed!")
+
 
 if __name__ == "__main__":
     run_tests()
