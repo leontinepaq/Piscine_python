@@ -12,22 +12,22 @@ def is_punct(c):
     return False
 
 
-def count_chars(arg: str) -> str:
+def count_chars(text: str) -> str:
     """
     Returns a string summarizing character counts by category
 
     Args:
-        arg (str): The input string to be processed
+        text (str): The input string to be processed
 
     Returns:
         The summary of character types
     """
-    nb_chars = len(arg)
-    nb_upper = sum(c.isupper() for c in arg)
-    nb_lower = sum(c.islower() for c in arg)
-    nb_digits = sum(c.isdigit() for c in arg)
-    nb_space = sum(c.isspace() for c in arg)
-    nb_punct = sum(is_punct(c) for c in arg)
+    nb_chars = len(text)
+    nb_upper = sum(c.isupper() for c in text)
+    nb_lower = sum(c.islower() for c in text)
+    nb_digits = sum(c.isdigit() for c in text)
+    nb_space = sum(c.isspace() for c in text)
+    nb_punct = sum(is_punct(c) for c in text)
 
     return (
         f"The text contains {nb_chars} characters:\n"
@@ -43,15 +43,18 @@ def main():
     """
     Main function: handles argument parsing and error management.
     """
+
     args = sys.argv[1:]
 
-    if not args:
-        print("Please provide a string to process")
-        return
-
     try:
-        assert len(args) == 1, "only one argument is expected"
-        result = count_chars(args[0])
+        if not args:
+            print("What is the text to count?")
+            text = sys.stdin.readline()
+        else:
+            assert len(args), "only one argument is expected"
+            text = args[0]
+
+        result = count_chars(text)
         print(result)
     except AssertionError as e:
         print(f"AssertionError: {e}", file=sys.stderr)
