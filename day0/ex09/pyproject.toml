@@ -1,17 +1,17 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
 
 [project]
 name = "ft_package"
 version = "0.0.1"
+requires-python = ">=3.10"
 description = "A sample test package"
 readme = "README.md"
 license = "MIT"
-license-files = ["LICENSE", "LICENSE.txt"]
 authors = [
-  { name = "eagle", email = "eagle@42.fr" },
+   { name = "lpaquatt", email = "lpaquatt@42.fr" }
 ]
   
 [project.urls]
-homepage = "https://github.com/eagle/ft_package"
+homepage = "https://github.com/leontinepaq/Piscine_python/tree/main/day0/ex09"

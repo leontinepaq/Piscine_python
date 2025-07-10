@@ -19,7 +19,8 @@ def run_tests():
         passed = result == expected
         status = "✅ Success" if passed else "❌ Failure !"
         print(
-            f"Test {i}:\ncount_in_list({lst!r}, {el!r}) = {result}, expected {expected}\n{status}\n"
+            f"Test {i}:\ncount_in_list({lst!r}, {el!r}) = {result}, "
+            f"expected {expected}\n{status}\n"
         )
         if not passed:
             all_passed = False

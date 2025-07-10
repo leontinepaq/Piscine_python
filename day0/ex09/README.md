@@ -1,4 +1,4 @@
-# SimpleUtils
+# ft_package
 
 A small Python utility package with basic helper functions.
 
@@ -23,7 +23,7 @@ Increments the given numeric value by one.
 
 **Example:**
 ```python
-from simpleutils import add_one
+from ft_package import add_one
 
 print(add_one(4))  # Output: 5
 ```
@@ -44,7 +44,7 @@ Counts how many times el appears in lst.
 
 **Example:**
 ```python
-from simpleutils import count_in_list
+from ft_package import count_in_list
 
 print(count_in_list([1, 2, 2, 3], 2))  # Output: 2
 ```
@@ -54,6 +54,16 @@ print(count_in_list([1, 2, 2, 3], 2))  # Output: 2
 Python 3.10+
 
 No external dependencies.
+
+## 📦 Build
+
+To generate the distribution files (wheel and source archive), run:
+
+```bash
+python3 -m build
+```
+
+This will create the .tar.gz and .whl files in the dist/ directory.
 
 ## 📁 Installation
 
@@ -92,6 +102,5 @@ MIT License
 
 ## ✨ Author
 
-eagle – eagle@42.fr
-
+lpaquatt – lpaquatt@42.fr
 

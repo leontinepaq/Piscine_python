@@ -1,0 +1,4 @@
+Retirer les testers
+Checker flake8 : flake8 ex05 ex06 ex07 ex08 ex09
+et les documentations a partir de l'ex 5
+Retirer ex09/Makefile
