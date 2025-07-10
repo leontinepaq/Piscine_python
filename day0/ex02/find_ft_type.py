@@ -12,7 +12,7 @@ def all_thing_is_obj(object: Any) -> int:
 
 	if obj_type in type_map:
 		print(f"{type_map[obj_type]} : {obj_type}")
-	elif obj_type == str:
+	elif obj_type is str:
 		print(f"{object} is in the kitchen : {obj_type}")
 	else:
 		print("Type not found")
